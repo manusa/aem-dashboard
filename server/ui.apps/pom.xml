@@ -9,7 +9,7 @@
         <groupId>com.marcnuri.aem</groupId>
         <artifactId>dashboard</artifactId>
         <version>1.0-SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath>
+        <relativePath>../../pom.xml</relativePath>
     </parent>
 
     <!-- ====================================================================== -->
@@ -28,7 +28,7 @@
         <resources>
             <!-- define the resources that will go into the package -->
             <resource>
-                <directory>${basedir}/src/main/content/jcr_root</directory>
+                <directory>src/main/content/jcr_root</directory>
                 <excludes>
                     <!-- exclude .vlt control files in the package -->
                     <exclude>**/.vlt</exclude>
@@ -44,7 +44,7 @@
                 </excludes>
             </resource>
             <resource>
-                <directory>${basedir}/src/main/content/META-INF/vault/definition</directory>
+                <directory>src/main/content/META-INF/vault/definition</directory>
                 <targetPath>../vault-work/META-INF/vault/definition</targetPath>
             </resource>
         </resources>
