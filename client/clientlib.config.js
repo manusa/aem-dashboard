@@ -11,7 +11,9 @@ module.exports = {
         js: [
           'dist/bundle.js'
         ],
-        css: []
+        css: [
+          'dist/bundle.css'
+        ]
       }
     }
   ]

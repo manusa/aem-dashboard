@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const SRC_DIR = __dirname + '/src';
 const DIST_DIR = __dirname + '/dist';
@@ -31,6 +32,20 @@ module.exports = {
           loader: 'html-loader',
           options: {minimize: true}
         }
+      },
+      {
+        test: /\.(scss|sass|css)$/,
+        exclude: /node_modules/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          {
+            loader: 'sass-loader',
+            options: {
+              includePaths: ['./node_modules']
+            }
+          }
+        ]
       }
     ]
   },
@@ -42,7 +57,10 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: SRC_DIR + '/index.html',
       filename: './index.html'
-    })
+    }),
+    new MiniCssExtractPlugin({
+      filename: 'bundle.css'
+    }),
   ],
   devServer: {
     contentBase: DIST_DIR,
