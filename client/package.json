@@ -48,7 +48,9 @@
   },
   "dependencies": {
     "@material-ui/core": "^4.0.0",
+    "@material-ui/icons": "^4.2.1",
     "babel-polyfill": "^6.26.0",
+    "clsx": "^1.0.4",
     "react": "^16.8.6"
   }
 }
