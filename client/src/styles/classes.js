@@ -1,6 +1,6 @@
 const drawerWidth = 240;
 
-export const app = theme => ({
+export const layout = theme => ({
   root: {
     display: 'flex'
   },
@@ -44,7 +44,21 @@ export const drawer = theme => ({
     position: 'relative',
     whiteSpace: 'nowrap',
     width: drawerWidth,
+    transition: theme.transitions.create('width', {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    })
   },
-  paperOpen: {
+  paperClose: {
+    overflowX: 'hidden',
+    transition: theme.transitions.create('width', {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+    width: 0,
+    // transition: theme.transitions.create('width', {
+    //   easing: theme.transitions.easing.sharp,
+    //   duration: theme.transitions.duration.enteringScreen,
+    // })
   }
 });

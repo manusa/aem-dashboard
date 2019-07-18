@@ -51,6 +51,9 @@
     "@material-ui/icons": "^4.2.1",
     "babel-polyfill": "^6.26.0",
     "clsx": "^1.0.4",
-    "react": "^16.8.6"
+    "lodash": "^4.17.14",
+    "react": "^16.8.6",
+    "react-redux": "^7.1.0",
+    "redux": "^4.0.4"
   }
 }
