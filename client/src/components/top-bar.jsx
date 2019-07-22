@@ -5,13 +5,15 @@ import AppBar from '@material-ui/core/AppBar';
 import IconButton from '@material-ui/core/IconButton';
 import Toolbar from '@material-ui/core/Toolbar';
 import MenuIcon from '@material-ui/icons/Menu';
+import PersonIcon from '@material-ui/icons/Person';
 import withStyles from '@material-ui/core/styles/withStyles';
 import Typography from '@material-ui/core/Typography';
+import {toggleDrawer} from '../actions/app';
 import {topBar} from '../styles/classes';
 import {drawerOpen} from '../selectors/app';
-import {toggleDrawer} from '../actions/app';
+import {selfUserName} from '../selectors/users';
 
-const TopBar = ({classes, drawerOpen, toggleDrawer, title}) => {
+const TopBar = ({classes, drawerOpen, toggleDrawer, title, userName}) => {
   return (
     <AppBar
       position="absolute"
@@ -26,8 +28,16 @@ const TopBar = ({classes, drawerOpen, toggleDrawer, title}) => {
             <MenuIcon/>
           </IconButton>
         )}
-        <div>
+        <div className={classes.title}>
           <Typography component="h1" variant="h6">{title}</Typography>
+        </div>
+        <div className={classes.user}>
+          <IconButton>
+            <PersonIcon />
+          </IconButton>
+          <Typography>
+            {userName || 'NOT LOGGED IN'}
+          </Typography>
         </div>
       </Toolbar>
     </AppBar>
@@ -35,7 +45,8 @@ const TopBar = ({classes, drawerOpen, toggleDrawer, title}) => {
 };
 
 const mapStateToProps = (state) => ({
-  drawerOpen: drawerOpen(state)
+  drawerOpen: drawerOpen(state),
+  userName: selfUserName(state)
 });
 
 const mapDispatchToProps = {

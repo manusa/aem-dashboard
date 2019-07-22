@@ -5,6 +5,8 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const SRC_DIR = __dirname + '/src';
 const DIST_DIR = __dirname + '/dist';
 
+const devServer = require(`${__dirname}/dev/dev-server`)(DIST_DIR);
+
 module.exports = {
   entry: [
     'babel-polyfill',
@@ -62,11 +64,5 @@ module.exports = {
       filename: 'bundle.css'
     }),
   ],
-  devServer: {
-    contentBase: DIST_DIR,
-    historyApiFallback: true,
-    hot: true,
-    host: '0.0.0.0',
-    port: 9000
-  }
+  devServer
 };

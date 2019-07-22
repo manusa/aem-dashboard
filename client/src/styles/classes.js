@@ -19,6 +19,13 @@ export const topBar = theme => ({
       duration: theme.transitions.duration.leavingScreen,
     })
   },
+  title: {
+    flexGrow: 1,
+  },
+  user: {
+    display: 'flex',
+    alignItems: 'center'
+  },
   open: {
     marginLeft: drawerWidth,
     width: `calc(100% - ${drawerWidth}px)`,
