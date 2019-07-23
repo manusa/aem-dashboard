@@ -1,19 +1,25 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {connect} from 'react-redux';
 import clsx from 'clsx';
-import AppBar from '@material-ui/core/AppBar';
-import IconButton from '@material-ui/core/IconButton';
-import Toolbar from '@material-ui/core/Toolbar';
-import MenuIcon from '@material-ui/icons/Menu';
-import PersonIcon from '@material-ui/icons/Person';
-import withStyles from '@material-ui/core/styles/withStyles';
-import Typography from '@material-ui/core/Typography';
+import {
+  AppBar, Button, IconButton, Menu, MenuItem, Toolbar, Typography, withStyles
+} from '@material-ui/core';
+import {Menu as MenuIcon, Person as PersonIcon} from '@material-ui/icons';
 import {toggleDrawer} from '../actions/app';
 import {topBar} from '../styles/classes';
 import {drawerOpen} from '../selectors/app';
-import {selfUserName} from '../selectors/users';
+import {appName, appPath} from '../selectors/apps';
+import {selfAllowedApps, selfUserName} from '../selectors/users';
 
-const TopBar = ({classes, drawerOpen, toggleDrawer, title, userName}) => {
+const TopBar = ({classes, drawerOpen, toggleDrawer, title, userName, allowedApps}) => {
+  const [menuAnchor, setMenuAnchor] = useState(null);
+  const handleOpenMenu = event => {
+
+    setMenuAnchor(event.currentTarget);
+  };
+  const handleCloseMenu = () => {
+    setMenuAnchor(null);
+  };
   return (
     <AppBar
       position="absolute"
@@ -24,7 +30,10 @@ const TopBar = ({classes, drawerOpen, toggleDrawer, title, userName}) => {
     >
       <Toolbar>
         {!drawerOpen && (
-          <IconButton onClick={toggleDrawer}>
+          <IconButton
+            color="inherit"
+            onClick={toggleDrawer}
+          >
             <MenuIcon/>
           </IconButton>
         )}
@@ -32,12 +41,29 @@ const TopBar = ({classes, drawerOpen, toggleDrawer, title, userName}) => {
           <Typography component="h1" variant="h6">{title}</Typography>
         </div>
         <div className={classes.user}>
-          <IconButton>
-            <PersonIcon />
-          </IconButton>
-          <Typography>
-            {userName || 'NOT LOGGED IN'}
-          </Typography>
+          <Button
+            color="inherit"
+            onClick={handleOpenMenu}
+          >
+            <PersonIcon className={classes.userButtonIcon} />
+            <Typography>
+              {userName || 'NOT LOGGED IN'}
+            </Typography>
+          </Button>
+          <Menu
+            anchorEl={menuAnchor}
+            keepMounted
+            open={Boolean(menuAnchor)}
+            onClose={handleCloseMenu}
+          >
+            {allowedApps.map(app => (
+              <MenuItem key={appPath(app)}>
+                <a href={`${appPath(app)}.html`} style={{textDecoration: 'none', color: 'inherit'}}>
+                  {appName(app)}
+                </a>
+              </MenuItem>
+            ))}
+          </Menu>
         </div>
       </Toolbar>
     </AppBar>
@@ -46,7 +72,8 @@ const TopBar = ({classes, drawerOpen, toggleDrawer, title, userName}) => {
 
 const mapStateToProps = (state) => ({
   drawerOpen: drawerOpen(state),
-  userName: selfUserName(state)
+  userName: selfUserName(state),
+  allowedApps: selfAllowedApps(state)
 });
 
 const mapDispatchToProps = {

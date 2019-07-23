@@ -1,5 +1,5 @@
 import React from 'react';
-import withStyles from '@material-ui/core/styles/withStyles';
+import {withStyles} from '@material-ui/core';
 import Drawer from './drawer';
 import TopBar from './top-bar';
 import {layout} from '../styles/classes';

@@ -1,10 +1,9 @@
 import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import ThemeProvider from '@material-ui/styles/ThemeProvider';
-import Typography from '@material-ui/core/Typography';
+import {CssBaseline} from '@material-ui/core';
+import {ThemeProvider} from '@material-ui/styles';
 import {fetchUser} from '../actions/users';
-import {Layout} from '../components';
+import {DashGrid, Layout} from '../components';
 import theme from '../styles/theme';
 
 import '../styles/main.scss';
@@ -17,7 +16,7 @@ const App = ({fetchUser}) => {
     <ThemeProvider theme={theme}>
       <CssBaseline/>
       <Layout title={'AEM Dashboard'}>
-        <Typography variant="h1">Hello React Dark</Typography>
+        <DashGrid />
       </Layout>
     </ThemeProvider>
   );

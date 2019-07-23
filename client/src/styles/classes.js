@@ -1,17 +1,5 @@
 const drawerWidth = 240;
 
-export const layout = theme => ({
-  root: {
-    display: 'flex'
-  },
-  main: {
-    flexGrow: 1,
-    height: '100vh',
-    overflow: 'auto'
-  },
-  mainTopBarSpacer: theme.mixins.toolbar
-});
-
 export const topBar = theme => ({
   root: {
     transition: theme.transitions.create(['width', 'margin'], {
@@ -25,6 +13,9 @@ export const topBar = theme => ({
   user: {
     display: 'flex',
     alignItems: 'center'
+  },
+  userButtonIcon: {
+    marginRight: theme.spacing(2)
   },
   open: {
     marginLeft: drawerWidth,
@@ -67,5 +58,23 @@ export const drawer = theme => ({
     //   easing: theme.transitions.easing.sharp,
     //   duration: theme.transitions.duration.enteringScreen,
     // })
+  }
+});
+
+export const layout = theme => ({
+  root: {
+    display: 'flex'
+  },
+  main: {
+    flexGrow: 1,
+    height: '100vh',
+    overflow: 'auto'
+  },
+  mainTopBarSpacer: theme.mixins.toolbar
+});
+
+export const dashGrid = theme => ({
+  root: {
+    padding: theme.spacing(4)
   }
 });

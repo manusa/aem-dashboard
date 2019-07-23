@@ -1,13 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import clsx from 'clsx';
-import Divider from '@material-ui/core/Divider';
-import IconButton from '@material-ui/core/IconButton';
-import List from '@material-ui/core/List';
-import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import DashboardIcon from '@material-ui/icons/Dashboard';
-import withStyles from '@material-ui/core/styles/withStyles';
+import {Divider, IconButton, List, SwipeableDrawer, withStyles} from '@material-ui/core';
+import {ChevronLeft as ChevronLeftIcon, Dashboard as DashboardIcon} from '@material-ui/icons';
 import DrawerListItem from './drawer-list-item';
 import {toggleDrawer} from '../actions/app';
 import {drawerOpen} from '../selectors/app';

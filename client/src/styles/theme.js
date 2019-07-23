@@ -1,9 +1,12 @@
-import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
+import {createMuiTheme} from '@material-ui/core';
+import {blue, deepOrange} from '@material-ui/core/colors';
 
 const theme = createMuiTheme({
   spacing: 4,
   palette: {
-    type: 'dark',
+    type: 'light',
+    primary: blue,
+    secondary: deepOrange
   }
 });
 
