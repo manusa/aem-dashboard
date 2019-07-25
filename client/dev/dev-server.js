@@ -28,6 +28,22 @@ const mockEndpoints = (app) => {
 }
     `);
   });
+  app.get('/bin/security/authorizables.json', (req, res) => {
+    res.status(200)
+      .set('Content-Type', 'application/json')
+      .set('Cache-Control', 'no-cache, no-store, max-age=0')
+      .send(`
+{
+   "authorizables":[
+    {
+      "id":"account-manager",
+      "name":"account-manager",
+      "type":"user"      
+    }
+   ]
+}
+    `);
+  });
 };
 
 const devServer = (distDir) => ({

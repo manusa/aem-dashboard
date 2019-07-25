@@ -17,6 +17,10 @@ export const topBar = theme => ({
   userButtonIcon: {
     marginRight: theme.spacing(2)
   },
+  userMenuLink: {
+    textDecoration: 'none',
+    color: 'inherit'
+  },
   open: {
     marginLeft: drawerWidth,
     width: `calc(100% - ${drawerWidth}px)`,

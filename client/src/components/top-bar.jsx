@@ -9,7 +9,7 @@ import {toggleDrawer} from '../actions/app';
 import {topBar} from '../styles/classes';
 import {drawerOpen} from '../selectors/app';
 import {appName, appPath} from '../selectors/apps';
-import {selfAllowedApps, selfUserName} from '../selectors/users';
+import {selfAllowedApps, selfUserName} from '../users';
 
 const TopBar = ({classes, drawerOpen, toggleDrawer, title, userName, allowedApps}) => {
   const [menuAnchor, setMenuAnchor] = useState(null);
@@ -58,11 +58,16 @@ const TopBar = ({classes, drawerOpen, toggleDrawer, title, userName, allowedApps
           >
             {allowedApps.map(app => (
               <MenuItem key={appPath(app)}>
-                <a href={`${appPath(app)}.html`} style={{textDecoration: 'none', color: 'inherit'}}>
+                <a href={`${appPath(app)}.html`} className={classes.userMenuLink}>
                   {appName(app)}
                 </a>
               </MenuItem>
             ))}
+            <MenuItem>
+              <a href="/system/sling/logout.html" className={classes.userMenuLink}>
+                Sign out
+              </a>
+            </MenuItem>
           </Menu>
         </div>
       </Toolbar>
